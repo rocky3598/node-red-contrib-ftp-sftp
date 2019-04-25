@@ -72,7 +72,7 @@ module.exports = function (RED) {
             switch (node.operation) {
                 case 'list':
                     var Ftp = new JSFtp(node.ftpConfig.options);
-                    console.log("[http://www.hardingpoint.com] FTP List:" + node.workdir.toString());
+                    console.log("FTP List:" + node.workdir.toString());
                     Ftp.ls(node.workdir,function(err,data){
                         // console.log(data);
                         msg.payload = data;
@@ -85,7 +85,7 @@ module.exports = function (RED) {
                     if (msg.payload.filename)
                         ftpfilename = msg.payload.filename;
                     var str = '';
-                    console.log("[http://www.hardingpoint.com] FTP Get:" + ftpfilename);
+                    console.log("FTP Get:" + ftpfilename);
                     Ftp.get(ftpfilename, function(err, socket){
                         if (err) {
                             node.error(err);
@@ -125,7 +125,7 @@ module.exports = function (RED) {
                     else
                         msgData = JSON.stringify(msg.payload);
 
-                    console.log("[http://www.hardingpoint.com] FTP Put:" + newFile);
+                    console.log("FTP Put:" + newFile);
 
                     var Ftp = new JSFtp(node.ftpConfig.options);
 
@@ -142,7 +142,7 @@ module.exports = function (RED) {
                     });
                     break;
                 case 'delete':
-                    console.log("[http://www.hardingpoint.com] FTP Delete:" + msg.payload.filename);
+                    console.log("FTP Delete:" + msg.payload.filename);
                     var Ftp = new JSFtp(node.ftpConfig.options);
                     Ftp.raw("dele", msg.payload.filename, function(err, data) {
                         if (err) node.error(err);

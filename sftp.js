@@ -41,27 +41,27 @@ module.exports = function (RED) {
     RED.nodes.createNode(this, n);
     var node = this;
 
-    console.log("[http://wwww.HardingPoint.com] SFTP - Config - hmac: " + n.hmac);
-    console.log("[http://wwww.HardingPoint.com] SFTP - Config - cipher: " + n.cipher);
+    console.log("SFTP - Config - hmac: " + n.hmac);
+    console.log("SFTP - Config - cipher: " + n.cipher);
 
     var keyFile = null;
     var keyData = null;
     if (process.env.SFTP_SSH_KEY_FILE){
         keyFile = process.env.SFTP_SSH_KEY_FILE;
         keyFile = require('path').resolve(__dirname,'../../' + keyFile);
-        console.log("[http://wwww.HardingPoint.com] SFTP_SSH_KEY_FILE: " + keyFile);
+        console.log("SFTP_SSH_KEY_FILE: " + keyFile);
 
         try{
             keyData = fs.readFileSync(keyFile).toString();
             console.log("[http://wwww.HardingPoint.com PRIVATE KEY] " + keyData);
         } catch (e){
             keyData = null;
-            console.log("[http://wwww.HardingPoint.com] SFTP - Read Key File [" + keyFile + "] Exception : " + e);
+            console.log("SFTP - Read Key File [" + keyFile + "] Exception : " + e);
         }
     }
 
     if (keyFile && keyData) {
-        console.log("[http://wwww.HardingPoint.com] SFTP - Using privateKey: " + keyFile + " Length: " + keyData.toString().length);
+        console.log("SFTP - Using privateKey: " + keyFile + " Length: " + keyData.toString().length);
         this.options = {
             host: n.host || 'localhost',
             port: n.port || 21,
@@ -76,7 +76,7 @@ module.exports = function (RED) {
             }
         };
     } else {
-        console.log("[http://wwww.HardingPoint.com] SFTP - Using User/Pwd");
+        console.log("SFTP - Using User/Pwd");
         this.options = {
             host: n.host || 'localhost',
             port: n.port || 21,
@@ -120,6 +120,7 @@ module.exports = function (RED) {
           node.sftpConfig.options.port = msg.port || node.sftpConfig.options.port ;
           node.sftpConfig.options.username = msg.user || node.sftpConfig.options.username || "";
           node.sftpConfig.options.password = msg.password || node.sftpConfig.options.password || "";
+          node.sftpConfig.options.algorithms = msg.algorithms || node.sftpConfig.options.algorithms || { };
 
           var conn = new sftp();
 
