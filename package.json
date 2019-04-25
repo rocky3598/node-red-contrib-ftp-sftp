@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-ftp-sftp-extended",
-  "version": "0.0.2",
+  "version": "0.0.1",
   "description": "A node-red node that support FTP and SFTP file transfer using $() environment variables to control the ftp connection details",
   "main": "sftp.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rocky3598/node-red-contrib-ftp-sftp.git"
+    "url": "git+https://github.com/rocky3598/node-red-contrib-ftp-sftp-extended.git"
   },
   "keywords": [
     "node-red",
@@ -25,9 +25,9 @@
   "author": "Jordan Vohwinkel",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rocky3598/node-red-contrib-ftp-sftp/issues"
+    "url": "https://github.com/rocky3598/node-red-contrib-ftp-sftp-extended/issues"
   },
-  "homepage": "https://github.com/rocky3598/node-red-contrib-ftp-sftp#readme",
+  "homepage": "https://github.com/rocky3598/node-red-contrib-ftp-sftp-extended#readme",
   "dependencies": {
     "ftp": "^0.3.10",
     "jsftp": "git+https://github.com/sergi/jsftp.git",
